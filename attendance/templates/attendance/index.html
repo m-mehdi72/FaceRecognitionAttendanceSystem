@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Attendance Tracker</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1>LIVE STREAM</h1>
+
+
+    <div>
+        <button id="toggle-camera">Toggle Camera</button>
+    </div>
+
+    <div id="webcam-feed"></div>
+
+    <div>
+        <button id="download-attendance">Download Attendance</button>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Initialize the camera toggle button
+            var isCameraOn = false;
+            $('#toggle-camera').click(function () {
+                isCameraOn = !isCameraOn;
+                if (isCameraOn) {
+                    window.open('/attendance/mark-attendance/', '_blank');
+                } else {
+                    stopCamera();
+                }
+            });
+
+            // Start the camera feed
+            function startCamera() {
+                navigator.mediaDevices.getUserMedia({ video: true })
+                    .then(function (stream) {
+                        var video = document.createElement('video');
+                        video.srcObject = stream;
+                        video.autoplay = true;
+                        document.getElementById('webcam-feed').appendChild(video);
+                    })
+                    .catch(function (error) {
+                        console.error('Error accessing camera:', error);
+                    });
+            }
+
+            // Stop the camera feed
+            function stopCamera() {
+                var videoElement = document.querySelector('#webcam-feed video');
+                if (videoElement) {
+                    videoElement.srcObject.getTracks().forEach(function (track) {
+                        track.stop();
+                    });
+                    videoElement.parentNode.removeChild(videoElement);
+                }
+            }
+
+            // Download attendance
+            $('#download-attendance').click(function () {
+                window.location.href = '/attendance/download-attendance/';
+            });
+        });
+    </script>
+</body>
+
+</html>

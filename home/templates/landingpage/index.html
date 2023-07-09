@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Face Recognition System</title>
+  {% load static %}
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url("{% static 'login/bg-face.jpg' %}");
+      background-size: cover;
+      image-rendering: auto;
+      image-rendering: crisp-edges;
+      image-rendering: pixelated;
+    }
+
+    header {
+      background-color: #173b64;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 32px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 35px;
+    }
+
+    p {
+      text-align: justify;
+      font-family: 'Calibri';
+      font-size: 25px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px 20px;
+      padding: 121px 40px;
+      text-align: left;
+      color: #fff;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .cta-button {
+      margin: 10px;
+      padding: 15px 30px;
+      font-size: 18px;
+      text-decoration: none;
+      background-color: #173b64;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .cta-button:hover {
+      background-color: #173b64;
+    }
+  </style>
+
+</head>
+
+<body>
+  <header>
+    <h1>Face Recognition System</h1>
+  </header>
+
+  <div class="container">
+    <h2>&nbsp&nbsp&nbspSimplifying Identification and Authentication</h2>
+    <p>
+      Our advanced face recognition system utilizes cutting-edge technology to accurately identify and authenticate
+      individuals.
+      Whether you're looking to enhance security measures or streamline your user authentication process, our system
+      offers a reliable and efficient solution.
+      Sign up or log in now to experience the power of facial recognition.
+    </p>
+
+    <div class="cta-buttons">
+
+      <a class="cta-button" onclick="window.location.href='/students/login_user'">continue</a>
+    </div>
+  </div>
+</body>
+
+</html>

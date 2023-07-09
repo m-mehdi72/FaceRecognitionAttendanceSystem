@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Face Trace Connect</title>
+        <meta name="description" content="">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% load static %} <!-- Load the static template tag -->
+    </head>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        body {
+            background-image: url("{% static 'login/bg-face.jpg' %}");
+            background-size: cover;
+            image-rendering: auto;
+            image-rendering: crisp-edges;
+            image-rendering: pixelated;
+        }
+
+
+        .navbar::after {
+
+            content: " ";
+            background-color: #001833;
+            opacity: 60%;
+
+            position: absolute;
+            top: 0px;
+            /*through this image will not move fromm top when its parent width increases */
+            left: 0px;
+            width: 100%;
+
+            height: 100%;
+
+            z-index: -1;
+        }
+
+        .navbar {
+            background-color: #001833;
+            overflow: hidden;
+            opacity: 50%;
+            height: 100px;
+
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            width: 50%;
+            height: 50px;
+            margin-left: 670px;
+        }
+
+        .menu a {
+            float: right;
+
+            color: #f2f2f2;
+            /* text-align: center; */
+            /* padding:  16px; */
+            text-decoration: none;
+
+            margin-right: 73px;
+            margin-top: -149px;
+            font-size: 22px;
+            font-family: 'Times New Roman', Times, serif;
+            padding: 0px;
+
+            width: 300px;
+            height: 50px;
+
+
+        }
+
+        .menu a:hover {
+            background-color: #ddd;
+            color: black;
+            border-radius: 10px;
+
+        }
+
+        .navbar img {
+            left: 30px;
+            width: 200px;
+            height: 180px;
+            position: relative;
+            top: -37px;
+            z-index: 1;
+        }
+
+        /* navbar ended*/
+
+
+
+        #project-name {
+            /* width: 50%;
+
+border-color:2px  2px  #001833;
+margin-top: 40px ;
+margin-left: ;*/
+            position: relative;
+
+        }
+
+
+        #project-name h1 {
+            font-size: 52px;
+            font-family: Arial, Helvetica, sans-serif;
+            /* color: #001833; */
+            color: white;
+            border-color: 2px 2px #001833;
+            position: absolute;
+            margin-top: 100px;
+            margin-left: 60px;
+            width: 28%;
+            height: 300px;
+            text-decoration: dotted;
+
+        }
+
+        .login::before {
+            content: " ";
+            background-color: #001833;
+            opacity: 60%;
+
+            position: absolute;
+            top: 0px;
+            /*through this image will not move fromm top when its parent width increases */
+            left: 0px;
+            width: 100%;
+
+            height: 100%;
+
+            z-index: -1;
+
+
+        }
+
+        .login {
+            width: 220px;
+            position: absolute;
+            margin-top: 106px;
+            margin-left: 600px;
+            padding: 40px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            /* background-color: #001833; */
+            height: 250px;
+
+
+        }
+
+        .login h2 {
+            text-align: center;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .login input[type="text"],
+        .login input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+
+        }
+
+
+
+
+        .login input[type="submit"] {
+            /*can use id as well*/
+            width: 90%;
+            height: 50px;
+            color: white;
+            background-color: #001833;
+
+            border-radius: 20px;
+            font-weight: bolder;
+            font-size: 20px;
+            cursor: pointer;
+            position: relative;
+            /*necessary for animations*/
+            box-shadow: 2px 2px 3px 3px azure;
+        }
+
+        .login input[type="submit"]:hover {
+            background-color: #000c19;
+            color: white;
+            border: 3px solid #000c19;
+            box-shadow: 2px 2px 4px 3px;
+
+            animation-name: btn;
+            animation-duration: .5s;
+            animation-timing-function: ease-out;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes btn {
+            25% {
+                top: 0px;
+                left: 10px;
+
+            }
+
+            50% {
+                top: 0px;
+                left: -10px;
+            }
+
+            100% {
+                top: 0px;
+                left: 0px;
+            }
+        }
+
+        /* For mobile devices */
+        @media (max-width: 767px) {
+            .navbar {
+                height: 80px;
+            }
+
+            .menu {
+                width: 100%;
+                justify-content: space-around;
+                margin-left: 0;
+                margin-top: 20px;
+            }
+
+            .menu a {
+                margin-right: 0;
+            }
+
+            #project-name h1 {
+                margin-top: -100px;
+                margin-left: 0;
+                width: 100%;
+                font-size: 40px;
+            }
+
+            .login {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+
+        <img src="{% static 'login/ftc-logo.png' %}"> <!-- Use the static template tag for the image source -->
+        <div class="menu">
+            <a href="admin.html">Admin Panel</a>
+            <a href="studentpanel.html">Student Panel</a>
+            <a href="practice.html">About</a>
+        </div>
+    </div>
+
+    <section class="section1">
+        <div id="project-name">
+            {% if messages %}
+                {% for message in messages %}
+                    <br><br><div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>    
+                
+                {% endfor%}
+            {% endif %}
+            <h1>Face Recognition Based Attendance Website</h1>
+        </div>
+        <section class="login">
+            <h2>Login</h2>
+            <form id="loginForm" method="POST">
+                {% csrf_token %} <!-- Add CSRF token for form submission -->
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="submit" value="Login">
+            </form>
+        </section>
+    </section>
+    <br><br>
+
+    <!-- <script>
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            // Perform credentials verification here
+            if (username === "admin" && password === "password") {
+                // Redirect to admin panel
+                window.location.href = "admin.html";
+            } else if (username === "student" && password === "password") {
+                // Redirect to student panel
+                window.location.href = "studentpanel.html";
+            } else {
+                alert("Invalid credentials. Please try again.");
+            }
+        });
+    </script> -->
+
+</body>
+
+</html>
